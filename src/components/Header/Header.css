@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 24.5px;
+}
+
+.ant-tabs-nav {
+  margin: 0 !important;
+}

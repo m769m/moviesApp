@@ -1,0 +1,14 @@
+.list-films {
+  margin: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 37px;
+}
+
+@media (max-width: 990px) {
+  .list-films {
+    display: block;
+  }
+}

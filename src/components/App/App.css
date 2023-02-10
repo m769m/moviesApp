@@ -1,0 +1,48 @@
+body {
+  background-color: #F7F7F7 !important;
+}
+
+img {
+  width: 160px;
+  height: 243px;
+  object-fit: cover;
+}
+
+.container {
+  padding: 13px 36px 17px;
+
+  background: #FFFFFF;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  min-height: 100vh;
+  max-width: 1010px;
+}
+
+.ant-layout {
+  background: none !important;
+}
+
+.ant-space.ant-space-vertical {
+  gap: 36px !important;
+}
+
+.example {
+  text-align: center;
+  height: 416px;
+}
+
+@media (max-width: 500px) {
+  img {
+    width: 79px;
+    height: 117px;
+
+    object-fit: cover;
+
+    margin-top: 6px;
+    margin-left: 10px;
+
+    position: absolute;
+  }
+}
