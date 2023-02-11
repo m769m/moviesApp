@@ -40,6 +40,7 @@ export default class MoviesItem extends Component {
 
   render() {
     const { id, genres, popularity, posterURL, filmTitle, releaseDate, overview, rating } = this.dataItem;
+    const { width } = this.context;
 
     const generesList = (
       <ul className="genres-list">
@@ -55,24 +56,52 @@ export default class MoviesItem extends Component {
 
     return (
       <div className="item-films">
-        <div className="item-films-img">
-          <img src={posterURL} alt="1" className="" />
-        </div>
+        {width > 500 ? (
+          <>
+            <div className="item-films-img">
+              <img src={posterURL} alt="1" className="" />
+            </div>
 
-        <div className="item-films-information">
-          <div className="header-item">
-            <h3 className="title-film">{filmTitle}</h3>
-            <span className={this.inputClasses}>{popularity}</span>
-          </div>
+            <div className="item-films-information">
+              <div className="header-item">
+                <h3 className="title-film">{filmTitle}</h3>
+                <span className={this.inputClasses}>{popularity}</span>
+              </div>
 
-          <div className="date-film">{releaseDate}</div>
+              <div className="date-film">{releaseDate}</div>
 
-          {generesList}
+              {generesList}
 
-          <div className="descripton-film">{this.pruningText(overview, 100)}</div>
+              <div className="descripton-film">{this.pruningText(overview, 100)}</div>
 
-          <RateStars id={id} rating={rating} />
-        </div>
+              <RateStars id={id} rating={rating} />
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="item-films-main-information">
+              <div className="item-films-img">
+                <img src={posterURL} alt="1" className="" />
+              </div>
+
+              <div className="item-films-information">
+                <div className="header-item">
+                  <h3 className="title-film">{filmTitle}</h3>
+                  <span className={this.inputClasses}>{popularity}</span>
+                </div>
+
+                <div className="date-film">{releaseDate}</div>
+
+                {generesList}
+              </div>
+            </div>
+
+            <div className="item-films-secondary-information">
+              <div className="descripton-film">{this.pruningText(overview, 100)}</div>
+              <RateStars id={id} rating={rating} />
+            </div>
+          </>
+        )}
       </div>
     );
   }

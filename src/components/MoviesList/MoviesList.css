@@ -3,12 +3,19 @@
 
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   row-gap: 37px;
+  column-gap: 36px;
 }
 
-@media (max-width: 990px) {
+@media (max-width: 769px) {
   .list-films {
-    display: block;
+    row-gap: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .list-films > li {
+    width: 100%;
   }
 }

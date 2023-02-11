@@ -16,6 +16,16 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
+    this.refWidth = React.createRef();
+
+    this.resizeHandler = () => {
+      const { clientWidth } = this.refWidth.current || 769;
+
+      this.setState({
+        width: clientWidth,
+      });
+    };
+
     this.state = {
       guestSessionId: "",
       searchQuery: "",
@@ -31,6 +41,7 @@ export default class App extends Component {
       totalPagesMovies: 0,
       totalPagesRateMovies: 0,
       changeTab: this.changeTab,
+      width: 769,
     };
 
     this.errorSetState = () => {
@@ -58,6 +69,9 @@ export default class App extends Component {
   }
 
   componentDidMount() {
+    window.addEventListener("resize", this.resizeHandler);
+    this.resizeHandler();
+
     if (localStorage.getItem("guestSessionId") === undefined) {
       this.createGuestSession();
     } else {
@@ -311,6 +325,7 @@ export default class App extends Component {
       ratedFilm,
       searchQuery,
       changeTab,
+      width,
     } = this.state;
 
     // eslint-disable-next-line react/jsx-no-constructed-context-values
@@ -320,6 +335,7 @@ export default class App extends Component {
       tabPane,
       guestSessionId,
       changeTab,
+      width,
     };
 
     const numberPage = tabPane === "1" ? numberPageMovies : numberPageRateMovies;
@@ -355,7 +371,7 @@ export default class App extends Component {
       ) : null;
 
     return (
-      <div className="container">
+      <div className="container" ref={this.refWidth}>
         <Layout>
           <Context.Provider value={contextValue}>
             <Header />

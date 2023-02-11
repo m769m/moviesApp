@@ -4,3 +4,8 @@
   margin-bottom: 34px !important;
 }
 
+@media (max-width: 769px) {
+  .serch-movies-input {
+    margin-bottom: 10px !important;
+  }
+}

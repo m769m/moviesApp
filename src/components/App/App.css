@@ -2,12 +2,6 @@ body {
   background-color: #F7F7F7 !important;
 }
 
-img {
-  width: 160px;
-  height: 243px;
-  object-fit: cover;
-}
-
 .container {
   padding: 13px 36px 17px;
 
@@ -33,16 +27,12 @@ img {
   height: 416px;
 }
 
-@media (max-width: 500px) {
-  img {
-    width: 79px;
-    height: 117px;
+@media (max-width: 769px) {
+  .container {
+    padding: 0px 16px 20px;
+  }
 
-    object-fit: cover;
-
-    margin-top: 6px;
-    margin-left: 10px;
-
-    position: absolute;
+  .ant-space.ant-space-vertical {
+    gap: 20px !important;
   }
 }

@@ -28,9 +28,10 @@ export default class RateStars extends Component {
 
     if (rate === 0) {
       callMovieDbService.deleteRateMovie(id, this.guestSessionId);
+    } else {
+      callMovieDbService.setMovieRating(id, this.guestSessionId, rate);
     }
 
-    callMovieDbService.setMovieRating(id, this.guestSessionId, rate);
     localStorage.setItem(`${id}`, `${rate}`);
   };
 

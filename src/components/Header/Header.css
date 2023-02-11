@@ -8,3 +8,9 @@
 .ant-tabs-nav {
   margin: 0 !important;
 }
+
+@media (max-width: 769px) {
+  .header {
+    margin-bottom: 17px;
+  }
+}
