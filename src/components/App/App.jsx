@@ -121,6 +121,8 @@ export default class App extends Component {
         notFound: false,
       });
     }
+
+    this.cancelSearchSetState();
   };
 
   searchQueryChange = (searchQuery) => {
