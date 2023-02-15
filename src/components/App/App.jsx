@@ -33,7 +33,7 @@ export default class App extends Component {
       movies: [],
       ratedFilm: [],
       genresList: [],
-      isLoading: false,
+      isLoading: true,
       isError: false,
       notFound: false,
       numberPageMovies: 1,
@@ -72,12 +72,14 @@ export default class App extends Component {
     window.addEventListener("resize", this.resizeHandler);
     this.resizeHandler();
 
-    if (localStorage.getItem("guestSessionId") === undefined) {
+    if (typeof localStorage.getItem("guestSessionId") !== "string") {
       this.createGuestSession();
     } else {
       this.setState({
         guestSessionId: localStorage.getItem("guestSessionId"),
       });
+
+      this.cancelSearchSetState();
     }
 
     this.getGenresList();
@@ -93,8 +95,9 @@ export default class App extends Component {
 
         this.setState({
           guestSessionId: body.guest_session_id,
-          isLoading: false,
         });
+
+        this.cancelSearchSetState();
       })
       .catch(() => {
         this.errorSetState();
@@ -235,7 +238,8 @@ export default class App extends Component {
   };
 
   createItem = (item) => {
-    const createDate = format(parseISO(item.release_date), "MMMM dd, yyyy");
+    const itemDate = item.release_date;
+    const createDate = itemDate !== "" ? format(parseISO(itemDate), "MMMM dd, yyyy") : "No date";
     const createPopularity = item.vote_average.toFixed(1) || 0;
 
     const releaseDate = item.release_date ? createDate : "no release date";

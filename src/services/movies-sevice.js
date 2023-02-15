@@ -32,8 +32,8 @@ export default class MoviesService {
   };
 
   getRatedMovies = async (guestSessionToken, pageNumber = 2) => {
-    const url =
-      `${this.baseUrl}guest_session/${guestSessionToken}` + `/rated/movies?api_key=${this.apiKey}&page=${pageNumber}`;
+    const query = `api_key=${this.apiKey}&page=${pageNumber}`;
+    const url = `${this.baseUrl}guest_session/${guestSessionToken}/rated/movies?${query}`;
     return this.getDataFromServer(url);
   };
 
